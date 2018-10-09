@@ -1,5 +1,9 @@
 log
 data
 save
+out.pb
+out.bin
+out.mapping
+out.xml
+log-mo.txt
 *.swp
-*.pb
