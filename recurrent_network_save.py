@@ -87,6 +87,9 @@ accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 # Initialize the variables (i.e. assign their default value)
 init = tf.global_variables_initializer()
 
+model_path = "./save/model.ckpt"
+saver = tf.train.Saver()
+
 # Start training
 with tf.Session() as sess:
 
@@ -111,6 +114,9 @@ with tf.Session() as sess:
                   "{:.3f}".format(acc))
 
     print("Optimization Finished!")
+
+    save_path = saver.save(sess, model_path)
+    tf.train.write_graph(sess.graph_def, './save', 'model.pbtxt')
 
     # Calculate accuracy for 128 mnist test images
     test_len = 128
